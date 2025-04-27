@@ -5,11 +5,15 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import Welcome from "./Welcome";
-import SignUp from "./SignUp";
-import Login from "./Login";
-import PatientHistory from "./PatientHistory";
-import Dashboard from "./Dashboard";
+import Welcome from "./Pages/Welcome";
+import SignUp from "./Pages/SignUp";
+import Login from "./Pages/Login";
+import PatientHistory from "./Pages/PatientHistory";
+import Dashboard from "./Pages/Dashboard";
+import SymptomTracker from "./Pages/SymptomTracker";
+import Reminders from "./Pages/Reminders";
+import MedTracker from "./Pages/MedTracker";
+import GloveControls from "./Pages/GloveControls";
 
 const ProtectedRoute = ({ children }) => {
   const isAuthenticated = localStorage.getItem("authToken");
@@ -38,6 +42,40 @@ function App() {
               <Dashboard />
             </ProtectedRoute>
           }
+        />
+        <Route
+          path="/symptomtracker"
+          element={
+            <ProtectedRoute>
+              <SymptomTracker />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/reminders"
+          element={
+            <ProtectedRoute>
+              <Reminders />
+            </ProtectedRoute>
+          } 
+        />
+         <Route
+          path="/medtracker"
+          element={
+            <ProtectedRoute>
+              <MedTracker />
+            </ProtectedRoute>
+          }
+          
+        />
+          <Route
+          path="/glovecontrols"
+          element={
+            <ProtectedRoute>
+              <GloveControls />
+            </ProtectedRoute>
+          }
+          
         />
       </Routes>
     </Router>

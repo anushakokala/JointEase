@@ -8,7 +8,7 @@ const Login = () => {
     <div className="flex items-center justify-center h-screen px-4">
       <div className="flex flex-col items-center w-full max-w-sm h-auto p-6 ">
         <h2 className="text-black text-2xl font-bold mt-14 mb-10 self-start">
-          Login
+          Login 
         </h2>
         <h2 className="text-black text-xl font-bold mb-4 self-start">
           Email
