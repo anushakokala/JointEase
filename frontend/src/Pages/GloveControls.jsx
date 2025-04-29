@@ -22,7 +22,7 @@ const GloveControls = () => {
 
     return (
         <div className="min-h-screen p-6 flex flex-col items-start">
-            <div className="mb-10 mt-12 ml-28 flex items-center gap-4">
+            <div className="mb-10 mt-12 ml-56 flex items-center gap-4">
                 <button onClick={goBack}>
                     <div>
                         <svg
@@ -51,9 +51,9 @@ const GloveControls = () => {
                         </svg>
                     </div>
                 </button>
-                <h2 className="text-black text-4xl font-bold">Glove Controls</h2>
+                <h2 className="text-black text-4xl font-bold ">Glove Controls</h2>
             </div>
-            <div className="w-[800px] h-[80px] ml-32 mt-14 p-2 pl-5 rounded-md border border-[#BBBBBB] flex items-center justify-between bg-[#ECF1FF]">
+            <div className="w-[800px] h-[80px] ml-56 mt-14 p-2 pl-5 rounded-md border border-[#BBBBBB] flex items-center justify-between bg-[#ECF1FF]">
                 <h2 className="text-md font-bold text-black mt-2">
                     Electric Nerve Stimulation
                 </h2>
@@ -66,7 +66,7 @@ const GloveControls = () => {
                     />
                 </button>
             </div>
-            <div className="w-[800px] h-[80px] ml-32 mt-14 p-2 pl-5 rounded-md border border-[#BBBBBB] flex items-center justify-between bg-[#ECF1FF]">
+            <div className="w-[800px] h-[80px] ml-56 mt-14 p-2 pl-5 rounded-md border border-[#BBBBBB] flex items-center justify-between bg-[#ECF1FF]">
                 <h2 className="text-md font-bold text-black mt-2">
                     Heating
                 </h2>
@@ -79,7 +79,7 @@ const GloveControls = () => {
                     />
                 </button>
             </div>
-            <div className="w-[800px] h-[80px] ml-32 mt-14 pl-5 pr-5 rounded-md border border-[#BBBBBB] flex items-center bg-[#ECF1FF] gap-8">
+            <div className="w-[800px] h-[80px] ml-56 mt-14 pl-5 pr-5 rounded-md border border-[#BBBBBB] flex items-center bg-[#ECF1FF] gap-8">
                 <h2 className="text-md font-bold text-black mt-2">
                     Voltage
                 </h2>

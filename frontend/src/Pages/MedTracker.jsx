@@ -15,8 +15,8 @@ const MedTracker = () => {
     };
 
     return (
-        <div className="min-h-screen p-6 flex flex-col items-start">
-            <div className="mb-10 mt-12 ml-28 flex items-center gap-4">
+        <div className="min-h-screen p-6 -ml-[260px] flex flex-col items-center">
+            <div className="mb-10 mt-12 mr-[400px]  flex items-center gap-4">
                 <button onClick={goBack}>
                     <div>
                         <svg
@@ -48,11 +48,11 @@ const MedTracker = () => {
                 <h2 className="text-black text-4xl font-bold">Medication Tracker</h2>
             </div>
 
-            <div className="ml-32 pb-4">
+            <div className="mr-[660px] pb-4">
                 <h2 className="text-black text-xl font-bold mt-2">Weekly View</h2>
             </div>
 
-            <div className="ml-32 mt-4 flex gap-24">
+            <div className="ml-[210px] mt-4 flex gap-24">
                 {days.map((day) => (
                     <button
                         key={day}
@@ -89,7 +89,7 @@ const MedTracker = () => {
                 ))}
             </div>
 
-            <div className="w-[550px] h-[250px] ml-40 mb-6 flex-shrink-0 rounded-[10px] border border-black/25 p-6">
+            <div className="w-[800px] h-[300px] ml-12 mb-6 flex-shrink-0 rounded-[10px] border border-black/25 p-6">
                 <div className="flex flex-col">
                     <div className="flex flex-row items-center justify-between">
                         <div className="text-xl font-bold">Medicine Name</div>
@@ -97,32 +97,32 @@ const MedTracker = () => {
                             10:00am
                         </div>
                     </div>
-                    <div className="flex  mb-[90px] w-[132px] h-[30px] flex-col justify-center flex-shrink-0 text-black font-roboto text-[15px] font-normal leading-[16px] tracking-[0.5px] mt-2">
+                    <div className="flex mb-[140px] w-[132px] h-[30px] flex-col justify-center flex-shrink-0 text-black font-roboto text-[15px] font-normal leading-[16px] tracking-[0.5px] mt-2">
                         Dosage + amount
                     </div>
                     <div className="w-[90px] h-[40px] pl-1 py-1 flex-shrink-0 rounded-[8px] bg-blue text-white font-bold text-lg flex items-center justify-center">
                        Take
                     </div>
-                    <div className="w-[90px] h-[40px]  ml-[410px] -mt-10 pl-1 py-1 flex-shrink-0 rounded-[8px] bg-[#FF7F7F] text-white font-bold text-lg flex items-center justify-center">
+                    <div className="w-[90px] h-[40px]  ml-[660px] -mt-10 pl-1 py-1 flex-shrink-0 rounded-[8px] bg-[#FF7F7F] text-white font-bold text-lg flex items-center justify-center">
                        Edit
                     </div>
                 </div>
             </div>
-            <div className="w-[550px] h-[250px] ml-40 mb-6 flex-shrink-0 rounded-[10px] border border-black/25 p-6">
+            <div className="w-[800px] h-[300px] ml-12 mb-6 flex-shrink-0 rounded-[10px] border border-black/25 p-6">
                 <div className="flex flex-col">
                     <div className="flex flex-row items-center justify-between">
                         <div className="text-xl font-bold">Medicine Name</div>
                         <div className="w-[90px] h-[40px] pl-1 py-1 flex-shrink-0 rounded-[8px] bg-blue text-white font-bold text-lg flex items-center justify-center">
-                            11:00am
+                            10:00am
                         </div>
                     </div>
-                    <div className="flex w-[132px]  mb-[90px] h-[30px] flex-col justify-center flex-shrink-0 text-black font-roboto text-[15px] font-normal leading-[16px] tracking-[0.5px] mt-2">
+                    <div className="flex mb-[140px] w-[132px] h-[30px] flex-col justify-center flex-shrink-0 text-black font-roboto text-[15px] font-normal leading-[16px] tracking-[0.5px] mt-2">
                         Dosage + amount
                     </div>
                     <div className="w-[90px] h-[40px] pl-1 py-1 flex-shrink-0 rounded-[8px] bg-blue text-white font-bold text-lg flex items-center justify-center">
                        Take
                     </div>
-                    <div className="w-[90px] h-[40px]  ml-[410px] -mt-10 pl-1 py-1 flex-shrink-0 rounded-[8px] bg-[#FF7F7F] text-white font-bold text-lg flex items-center justify-center">
+                    <div className="w-[90px] h-[40px]  ml-[660px] -mt-10 pl-1 py-1 flex-shrink-0 rounded-[8px] bg-[#FF7F7F] text-white font-bold text-lg flex items-center justify-center">
                        Edit
                     </div>
                 </div>

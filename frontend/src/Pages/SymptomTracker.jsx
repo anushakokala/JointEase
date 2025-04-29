@@ -52,8 +52,8 @@ const SymptomTracker = () => {
   };
 
   return (
-    <div className="min-h-screen p-6 flex flex-col items-start">
-      <div className="mb-10 mt-12 ml-28 flex items-center gap-4">
+    <div className="min-h-screen p-6 pl-52 flex flex-col items-center">
+      <div className="mb-10 mt-12 -ml-[800px]  flex items-center gap-4">
         <button onClick={goBack}>
           <div>
             <svg
@@ -84,10 +84,10 @@ const SymptomTracker = () => {
         </button>
         <h2 className="text-black text-4xl font-bold">Symptom Tracker</h2>
       </div>
-      <div className="ml-32 pb-4">
-        <h2 className="text-black text-xl font-bold mt-2">Weekly Log</h2>
+      <div className="pb-4">
+        <h2 className="text-black text-xl font-bold mt-2 -ml-[590px]">Weekly Log</h2>
       </div>
-      <div className="ml-32 mt-4 flex gap-24">
+      <div className=" mr-64 mt-4 flex gap-24">
         {days.map((day) => (
           <button
             key={day}
@@ -115,7 +115,7 @@ const SymptomTracker = () => {
         ))}
       </div>
 
-      <div className="relative flex flex-col items-start w-[940px] h-[530px] pb-24 pl-4 -mt-10 mx-32 rounded-3xl border-2 border-[#DADADA] mb-10">
+      <div className="relative flex flex-col items-start mr-[378px] w-[940px] h-[510px] pb-24 pl-4 -mt-10 mx-32 rounded-3xl border-2 border-[#DADADA] mb-10">
         <h2 className="font-bold text-xl py-4 px-2">Daily Log</h2>
         <div className="absolute top-6 right-6 flex items-center justify-center rounded-3xl border-2 border-[#DADADA] w-[83px] h-[72px]">
           <svg
@@ -206,12 +206,12 @@ const SymptomTracker = () => {
             value={text}
             onChange={handleText}
             placeholder="Type how you feel.."
-            className="mt-1 w-[600px] h-[230px] resize-none rounded-md border border-[#DADADA] bg-[#ECF1FF] p-3 text-md  focus:outline-none focus:ring-2 focus:ring-blue-300"
+            className="mt-3 w-[600px] h-[230px] resize-none rounded-md border border-[#DADADA] bg-[#ECF1FF] p-3 text-md  focus:outline-none focus:ring-2 focus:ring-blue-300"
           />
         </div>
       </div>
-      <div className="ml-40 mt-6">
-        <div className="flex flex-col items-start text-xl font-bold -ml-10">
+      <div className="mr-[590px] mt-6 w-[600px]">
+        <div className="mb-4 font-bold text-xl">
           Pain
         </div>
         <div className="mt-4">
@@ -219,7 +219,7 @@ const SymptomTracker = () => {
             id="pain"
             value={painLevel}
             onChange={handlePainChange}
-            className="-ml-10 mt-1 w-[880px] h-[47px] rounded-md border-2 border-[#DADADA] bg-[#ECF1FF] p-3 text-md focus:outline-none focus:ring-2 focus:ring-blue-300"
+            className=" mt-1 mb-10 w-[930px] h-[47px] ml-[2px] rounded-md border-2 border-[#DADADA] bg-[#ECF1FF] p-3 text-md focus:outline-none focus:ring-2 focus:ring-blue-300"
           >
             <option value="1">1 - Mild</option>
             <option value="2">2 - Low</option>
@@ -229,30 +229,28 @@ const SymptomTracker = () => {
           </select>
         </div>
       </div>
-      <div className=" ml-40 mt-6">
-        <div className="flex flex-col items-start text-xl font-bold -ml-10">
+      <div className="mb-6 mr-[180px]">
+        <div className="flex flex-col items-start text-xl font-bold -ml-20 mb-4">
           Mood
         </div>
-        <div className=" flex px-9 -ml-10 mb-28 mt-4 w-[880px] h-[83px] rounded-md border-2 border-[#DADADA] p-3 text-md focus:outline-none focus:ring-2 focus:ring-blue-300 items-center justify-between">
-          {moods.map((mood) => (
-            <button
-              key={mood}
-              className={`flex flex-col items-center p-2 w-[100px] rounded-md `}
-              style={{
-                backgroundColor:
-                  selectedMood === mood
-                    ? highlightColor
-                    : defaultBackgroundColor,
-              }}
-              onClick={() => handleMoodClick(mood)}
-            >
-              {mood}
+        <div className="flex justify-center gap-60 -ml-20 w-[930px] h-[97px] border-2 border-[#DADADA] rounded-md p-4 bg-white">
+    {moods.map((mood) => (
+      <button
+        key={mood}
+        className={`flex flex-col items-center justify-center w-[100px] h-[70px] rounded-md  ${
+          selectedMood === mood
+            ? "bg-[#ECF1FF] border border-gray"
+            : "bg-white"
+        }`}
+        onClick={() => handleMoodClick(mood)}
+      >
+        <span className=" font-medium">{mood}</span>
               {/* ... (Mood SVGs) ... */}
               {mood === "Sad" && (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="60"
-                  height="40"
+                  height="50"
                   viewBox="0 0 27 26"
                   fill="none"
                 >
@@ -278,7 +276,7 @@ const SymptomTracker = () => {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="60"
-                  height="40"
+                  height="50"
                   viewBox="0 0 27 26"
                   fill="none"
                 >
@@ -304,7 +302,7 @@ const SymptomTracker = () => {
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="60"
-                  height="40"
+                  height="50"
                   viewBox="0 0 27 26"
                   fill="none"
                 >
@@ -414,7 +412,7 @@ const SymptomTracker = () => {
             </svg>
           </button>*/}
         </div>
-        <button className="bg-blue w-[300px] ml-[220px] text-white text-lg font-bold px-16 py-2 rounded-md ">
+        <button className="bg-black w-[150px] -ml-20 mt-20 text-white text-lg font-bold px-16 py-3 rounded-md ">
           Log
         </button>
       </div>

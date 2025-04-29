@@ -37,7 +37,7 @@ const Dashboard = () => {
             value={search}
             onChange={handleSearch}
             placeholder="Search"
-            className="w-[1200px] bg-[#FAFAFAED] pt-2 pb-2 pl-2 pr-2 mt-10 mb-20 ml-10 mr-10 rounded-xl border-[0.3px] focus:outline-none"
+            className="w-[1200px] bg-[#FAFAFAED] pt-2 pb-2 pl-2 pr-2 mt-10 mb-20 ml-10 mr-10 rounded-xl border-[0.3px] focus:outline-none focus:ring-2 focus:ring-blue-300"
           />
         </div>
         <div className="text-[30px] font-bold mb-10 ml-10 mr-10">

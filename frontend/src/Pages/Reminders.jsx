@@ -17,7 +17,9 @@ const Reminders = () => {
         setIsToggled(prev => !prev);
     };
     return (
-        <div className="min-h-screen p-6 flex flex-col items-start">
+        <div className="min-h-screen p-6 pl-[159px] flex flex-col items-start">
+
+
             <div className="mb-10 mt-12 ml-28 flex items-center gap-4">
                 <button onClick={goBack}>
                     <div>
@@ -103,7 +105,7 @@ const Reminders = () => {
                     </button>
                 </div>
             </h2>
-            <button className="bg-blue ml-[380px] text-white text-lg font-bold px-16 py-2 rounded-md mt-2">
+            <button className="bg-black ml-28 text-white text-lg font-bold px-16 py-3 rounded-md mt-2">
                 Add
             </button>
         </div>
