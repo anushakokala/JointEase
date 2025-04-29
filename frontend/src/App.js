@@ -14,6 +14,7 @@ import SymptomTracker from "./Pages/SymptomTracker";
 import Reminders from "./Pages/Reminders";
 import MedTracker from "./Pages/MedTracker";
 import GloveControls from "./Pages/GloveControls";
+import Settings from "./Pages/Settings";
 
 const ProtectedRoute = ({ children }) => {
   const isAuthenticated = localStorage.getItem("authToken");
@@ -73,6 +74,15 @@ function App() {
           element={
             <ProtectedRoute>
               <GloveControls />
+            </ProtectedRoute>
+          }
+          
+        />
+          <Route
+          path="/settings"
+          element={
+            <ProtectedRoute>
+              <Settings />
             </ProtectedRoute>
           }
           
