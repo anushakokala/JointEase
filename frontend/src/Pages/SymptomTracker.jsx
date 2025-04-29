@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const SymptomTracker = () => {
@@ -19,8 +19,9 @@ const SymptomTracker = () => {
   const [selectedDay, setSelectedDay] = useState(null);
   const [selectedSymptoms, setSelectedSymptoms] = useState([]);
   const [selectedMood, setSelectedMood] = useState(null);
-  const highlightColor = "#ECF1FF";
-  const defaultBackgroundColor = "white";
+  const [edit, setEdit] = useState(false);
+
+
   const navigate = useNavigate();
 
   const goBack = () => {
@@ -50,6 +51,46 @@ const SymptomTracker = () => {
   const handleMoodClick = (mood) => {
     setSelectedMood(mood === setSelectedMood ? null : mood);
   };
+
+
+  const handleLog = () => {
+    if (!selectedDay) return;
+    const logData = {
+      selectedSymptoms,
+      selectedMood,
+      text,
+      painLevel,
+    };
+    localStorage.setItem(`symptomLog-${selectedDay}`, JSON.stringify(logData));
+  };
+
+
+  useEffect(() => {
+    if (selectedDay) {
+      const savedData = localStorage.getItem(`symptomLog-${selectedDay}`);
+      if (savedData) {
+        const {
+          selectedSymptoms,
+          selectedMood,
+          text,
+          painLevel,
+        } = JSON.parse(savedData);
+        setSelectedSymptoms(selectedSymptoms || []);
+        setSelectedMood(selectedMood || null);
+        setText(text || "");
+        setPainLevel(painLevel || "");
+      } else {
+        // Reset state if no data is saved for that day
+        setSelectedSymptoms([]);
+        setSelectedMood(null);
+        setText("");
+        setPainLevel("");
+      }
+    }
+  }, [selectedDay]);
+
+
+
 
   return (
     <div className="min-h-screen p-6 pl-52 flex flex-col items-center">
@@ -117,7 +158,9 @@ const SymptomTracker = () => {
 
       <div className="relative flex flex-col items-start mr-[378px] w-[940px] h-[510px] pb-24 pl-4 -mt-10 mx-32 rounded-3xl border-2 border-[#DADADA] mb-10">
         <h2 className="font-bold text-xl py-4 px-2">Daily Log</h2>
-        <div className="absolute top-6 right-6 flex items-center justify-center rounded-3xl border-2 border-[#DADADA] w-[83px] h-[72px]">
+        <button
+          onClick={() => setEdit((prev) => !prev)}
+          className="absolute top-6 right-6 flex items-center justify-center rounded-3xl border-2 border-[#DADADA] w-[83px] h-[72px]">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="35"
@@ -132,7 +175,7 @@ const SymptomTracker = () => {
               fill="#407CE2"
             />
           </svg>
-        </div>
+        </button>
 
         {/*<div className="flex flex-col mt-6 ml-10">
           <div className="flex items-center bg-[#ECF1FF] w-[600px] h-[40px] rounded-md border border-[#DADADA] px-4 mb-4">
@@ -164,14 +207,14 @@ const SymptomTracker = () => {
               {allSymptoms.map((symptom) => (
                 <label
                   key={symptom}
-                  className={`inline-flex items-center rounded-full border-2 border-[#DADADA] bg-[#ECF1FF] px-3 py-1 text-sm font-semibold text-gray-700 cursor-pointer ${
-                    selectedSymptoms.includes(symptom)
+                  className={`inline-flex items-center rounded-full border-2 border-[#DADADA] bg-[#ECF1FF] px-3 py-1 text-sm font-semibold text-gray-700 cursor-pointer ${selectedSymptoms.includes(symptom)
                       ? "border-blue-400 bg-blue-100 text-blue-700"
                       : ""
-                  }`}
+                    }`}
                 >
                   <input
                     type="checkbox"
+                    disabled={!edit}
                     className="sr-only"
                     checked={selectedSymptoms.includes(symptom)}
                     onChange={() => handleSymptomToggle(symptom)}
@@ -205,6 +248,7 @@ const SymptomTracker = () => {
             id="notes"
             value={text}
             onChange={handleText}
+            disabled={!edit}
             placeholder="Type how you feel.."
             className="mt-3 w-[600px] h-[230px] resize-none rounded-md border border-[#DADADA] bg-[#ECF1FF] p-3 text-md  focus:outline-none focus:ring-2 focus:ring-blue-300"
           />
@@ -221,6 +265,7 @@ const SymptomTracker = () => {
             onChange={handlePainChange}
             className=" mt-1 mb-10 w-[930px] h-[47px] ml-[2px] rounded-md border-2 border-[#DADADA] bg-[#ECF1FF] p-3 text-md focus:outline-none focus:ring-2 focus:ring-blue-300"
           >
+            <option value="">Select Pain</option>
             <option value="1">1 - Mild</option>
             <option value="2">2 - Low</option>
             <option value="3">3 - Moderate</option>
@@ -234,17 +279,16 @@ const SymptomTracker = () => {
           Mood
         </div>
         <div className="flex justify-center gap-60 -ml-20 w-[930px] h-[97px] border-2 border-[#DADADA] rounded-md p-4 bg-white">
-    {moods.map((mood) => (
-      <button
-        key={mood}
-        className={`flex flex-col items-center justify-center w-[100px] h-[70px] rounded-md  ${
-          selectedMood === mood
-            ? "bg-[#ECF1FF] border border-gray"
-            : "bg-white"
-        }`}
-        onClick={() => handleMoodClick(mood)}
-      >
-        <span className=" font-medium">{mood}</span>
+          {moods.map((mood) => (
+            <button
+              key={mood}
+              className={`flex flex-col items-center justify-center w-[100px] h-[70px] rounded-md  ${selectedMood === mood
+                  ? "bg-[#ECF1FF] border border-gray"
+                  : "bg-white"
+                }`}
+              onClick={() => handleMoodClick(mood)}
+            >
+              <span className=" font-medium">{mood}</span>
               {/* ... (Mood SVGs) ... */}
               {mood === "Sad" && (
                 <svg
@@ -412,7 +456,9 @@ const SymptomTracker = () => {
             </svg>
           </button>*/}
         </div>
-        <button className="bg-black w-[150px] -ml-20 mt-20 text-white text-lg font-bold px-16 py-3 rounded-md ">
+        <button
+          onClick={handleLog}
+          className="bg-black w-[150px] -ml-20 mt-20 text-white text-lg font-bold px-16 py-3 rounded-md ">
           Log
         </button>
       </div>
